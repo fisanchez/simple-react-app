@@ -1,18 +1,21 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { fetchPopularRepos } from "../utils/api";
 
-const Item = (props) => {
-  // return <p> {props.value} </p>;
+const Item = ({ result }) => {
   return (
     <div className="column">
-      <p> {props.result.full_name} </p>
-      <img src={props.result.owner.avatar_url} alt="language" width="200px" />
+      <p> {result.full_name} </p>
+      <img src={result.owner.avatar_url} alt="language" width="200px" />
     </div>
   );
 };
 
-const ItemList = (props) => {
-  const results = props.results;
+Item.propTypes = {
+  result: PropTypes.object.isRequired,
+};
+
+const ItemList = ({ results }) => {
   const resultList = results.map((result) => {
     return <Item key={result.full_name} result={result} />;
   });

@@ -5,7 +5,7 @@ import "./Bulma.scss";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App columns is-vcentered">
       <Table />
     </div>
   );
