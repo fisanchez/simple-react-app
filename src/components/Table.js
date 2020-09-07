@@ -8,7 +8,7 @@ const Item = (props) => {
 const ItemList = (props) => {
   const results = props.results;
   const resultList = results.map((result) => {
-    return <Item key={result.full_name} value={result.full_name} />;
+    return <Item key={result.id} value={result.full_name} />;
   });
   return <div>{resultList}</div>;
 };
@@ -47,7 +47,7 @@ export default class Table extends React.Component {
     return (
       <div>
         <h1> Most popular repos </h1>
-        <label for={this.state.searchValue}> Language </label>
+        <label> Language </label>
         <input
           value={this.state.searchValue}
           onKeyDown={this.keyPress}
