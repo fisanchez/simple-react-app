@@ -1,4 +1,4 @@
-# Simple HTTP request and search
+# Simple HTTP Request and Render
 
 This small app used create-react-app and is an exercise on handling HTTP requests, state, re-render, with some CSS thrown in there.
 
