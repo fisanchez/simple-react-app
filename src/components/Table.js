@@ -1,4 +1,5 @@
 import React from 'react'
+import { fetchPopularRepos } from '../utils/api'
 
 export default class Table extends React.Component {
   constructor(props){
@@ -19,9 +20,9 @@ export default class Table extends React.Component {
   }
 
   keyPress(e){
-    // Enter key
+    // Search term and clear on pressing Enter key
     if(e.keyCode === 13){
-      this.setState({ searchValue: ''})
+      fetchPopularRepos(this.state.searchValue).then((res) => this.setState({results: res}))
     }
   }
 
@@ -38,7 +39,7 @@ export default class Table extends React.Component {
             onChange={this.handleChange} 
         />
         { this.isLoading() && <h1> Loading </h1> }
-        { !this.isLoading() && <h1> Loaded </h1> }
+        { !this.isLoading() && <p> { JSON.stringify(this.state.results) }</p>}
       </div>
     )
   }
