@@ -2,12 +2,11 @@ import React from "react";
 import { fetchPopularRepos } from "../utils/api";
 
 const Item = (props) => {
-  return <p>{props.value}</p>;
+  return <p className="col">{props.value}</p>;
 };
 
 const ItemList = (props) => {
   const results = props.results;
-  console.log("RESULTS", results);
   const resultList = results.map((result) => {
     return <Item key={result.full_name} value={result.full_name} />;
   });
@@ -47,12 +46,13 @@ export default class Table extends React.Component {
   render() {
     return (
       <div>
+        <h1> Most popular repos </h1>
+        <label for={this.state.searchValue}> Language </label>
         <input
           value={this.state.searchValue}
           onKeyDown={this.keyPress}
           onChange={this.handleChange}
         />
-        {this.isLoading() && <h1> Loading </h1>}
         {!this.isLoading() && <ItemList results={this.state.results} />}
       </div>
     );
